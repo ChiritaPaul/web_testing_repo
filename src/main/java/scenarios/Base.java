@@ -12,7 +12,6 @@ public class Base {
 
     public static WebDriver driver;
 
-
     @BeforeAll
     public static void baseBeforeClass(){
         WebDriverManager.chromedriver().setup();
