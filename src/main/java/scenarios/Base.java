@@ -13,10 +13,10 @@ public class Base {
     public static WebDriver driver;
 
     @BeforeAll
-    public static void baseBeforeClass(){
+    public static void baseBeforeClass() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("ignore-certificate-errors","--window-size=1920,1080", "--disable-extensions", "--incognito");
+        chromeOptions.addArguments("ignore-certificate-errors", "--window-size=1920,1080", "--disable-extensions", "--incognito");
         driver = new ChromeDriver(chromeOptions);
     }
 
@@ -28,5 +28,9 @@ public class Base {
     @AfterAll
     public static void baseAfterClass() {
         driver.quit();
+    }
+
+    public void waitForElement(int durationInMilliseconds) throws InterruptedException {
+        Thread.sleep(durationInMilliseconds);
     }
 }
