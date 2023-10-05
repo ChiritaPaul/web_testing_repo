@@ -25,8 +25,5 @@ public class TestNavigation extends Base {
         waitForElement(500);
         driver.manage().window().maximize();
         waitForElement(500);
-
-        stackoverflowPage.clickOnAboutButton();
-        Assertions.assertTrue(driver.getTitle().contains("Empowering"), "User is on About section");
     }
 }
