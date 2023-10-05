@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import scenarios.Base;
+import scenarios.Utils;
 
 public class TestStackoverflowPage extends Base {
     StackoverflowPage stackoverflowPage = new StackoverflowPage();
@@ -31,10 +32,16 @@ public class TestStackoverflowPage extends Base {
         driver.navigate().back();
 
         //check if top search bar, log in and sign up buttons are visible
+        Utils.highlightElement(driver, driver.findElement(By.xpath(stackoverflowPage.XpathForElements("searchBar"))));
         Assertions.assertTrue(driver.findElement(By.xpath(stackoverflowPage.XpathForElements("searchBar"))).isDisplayed(), "Search bar found!");
+        Utils.unhighlightElement(driver, driver.findElement(By.xpath(stackoverflowPage.XpathForElements("searchBar"))));
+
+        Utils.highlightElement(driver, driver.findElement(By.xpath(stackoverflowPage.XpathForElements("logInButton"))));
         Assertions.assertTrue(driver.findElement(By.xpath(stackoverflowPage.XpathForElements("logInButton"))).isDisplayed(), "Login button found!");
+        Utils.unhighlightElement(driver, driver.findElement(By.xpath(stackoverflowPage.XpathForElements("logInButton"))));
+
+        Utils.highlightElement(driver, driver.findElement(By.xpath(stackoverflowPage.XpathForElements("signUpButton"))));
         Assertions.assertTrue(driver.findElement(By.xpath(stackoverflowPage.XpathForElements("signUpButton"))).isDisplayed(), "Signup button found!");
-
+        Utils.unhighlightElement(driver, driver.findElement(By.xpath(stackoverflowPage.XpathForElements("signUpButton"))));
     }
-
 }
