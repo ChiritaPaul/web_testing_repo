@@ -44,4 +44,45 @@ public class TestStackoverflowPage extends Base {
         Assertions.assertTrue(driver.findElement(By.xpath(stackoverflowPage.XpathForElements("signUpButton"))).isDisplayed(), "Signup button found!");
         Utils.unhighlightElement(driver, driver.findElement(By.xpath(stackoverflowPage.XpathForElements("signUpButton"))));
     }
+
+    @Test
+    public void testSearchBarFunctionality() throws InterruptedException {
+        final String insertIntoSearchBar = "Selenium testing";
+
+        stackoverflowPage.goToStackoverflowPage();
+        Assertions.assertEquals("Stack Overflow - Where Developers Learn, Share, & Build Careers", driver.getTitle(), "User is on correct site.");
+
+        Utils.highlightElement(driver, driver.findElement(By.xpath(stackoverflowPage.XpathForElements("searchBar"))));
+        Assertions.assertTrue(driver.findElement(By.xpath(stackoverflowPage.XpathForElements("searchBar"))).isDisplayed(), "Search bar found!");
+
+        stackoverflowPage.clickOnButton("searchBar");
+        stackoverflowPage.insertIntoSearchBar("searchBar", insertIntoSearchBar);
+        waitForElement(1500);
+
+        Assertions.assertTrue(driver.getCurrentUrl().contains("nocaptcha"), "There are some search results!");
+    }
+
+    @Test
+    public void testLogInButtonFunctionality() throws InterruptedException {
+        stackoverflowPage.goToStackoverflowPage();
+        Assertions.assertEquals("Stack Overflow - Where Developers Learn, Share, & Build Careers", driver.getTitle(), "User is on correct site.");
+
+        Utils.highlightElement(driver, driver.findElement(By.xpath(stackoverflowPage.XpathForElements("logInButton"))));
+        Assertions.assertTrue(driver.findElement(By.xpath(stackoverflowPage.XpathForElements("logInButton"))).isDisplayed(), "Login button found!");
+
+        stackoverflowPage.clickOnButton("logInButton");
+        Assertions.assertTrue(driver.getCurrentUrl().contains("users/login"));
+    }
+
+    @Test
+    public void testSignUpButtonFunctionality() throws InterruptedException {
+        stackoverflowPage.goToStackoverflowPage();
+        Assertions.assertEquals("Stack Overflow - Where Developers Learn, Share, & Build Careers", driver.getTitle(), "User is on correct site.");
+
+        Utils.highlightElement(driver, driver.findElement(By.xpath(stackoverflowPage.XpathForElements("logInButton"))));
+        Assertions.assertTrue(driver.findElement(By.xpath(stackoverflowPage.XpathForElements("logInButton"))).isDisplayed(), "Login button found!");
+
+        stackoverflowPage.clickOnButton("signUpButton");
+        Assertions.assertTrue(driver.getCurrentUrl().contains("users/signup"));
+    }
 }

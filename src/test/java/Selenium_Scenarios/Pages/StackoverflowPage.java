@@ -1,6 +1,7 @@
 package Selenium_Scenarios.Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import scenarios.Base;
 
@@ -15,6 +16,7 @@ public class StackoverflowPage extends Base {
             case "home":
                 WebElement stackoverflowHomeButton = driver.findElement(By.xpath(XpathForElements("homeButton")));
                 stackoverflowHomeButton.click();
+                break;
             case "about":
                 WebElement stackoverflowAboutButton = driver.findElement(By.xpath(XpathForElements("aboutButton")));
                 stackoverflowAboutButton.click();
@@ -26,6 +28,18 @@ public class StackoverflowPage extends Base {
             case "forTeams":
                 WebElement stackoverflowForTeamsButton = driver.findElement(By.xpath(XpathForElements("forTeamsButton")));
                 stackoverflowForTeamsButton.click();
+                break;
+            case "searchBar":
+                WebElement stackoverflowSearchBar = driver.findElement(By.xpath(XpathForElements("searchBar")));
+                stackoverflowSearchBar.click();
+                break;
+            case "logInButton":
+                WebElement stackoverflowLogInButton = driver.findElement(By.xpath(XpathForElements("logInButton")));
+                stackoverflowLogInButton.click();
+                break;
+            case "signUpButton":
+                WebElement stackoverflowSignUpButton = driver.findElement(By.xpath(XpathForElements("signUpButton")));
+                stackoverflowSignUpButton.click();
                 break;
             default:
                 System.out.println("No button found!");
@@ -41,7 +55,7 @@ public class StackoverflowPage extends Base {
             case "forTeamsButton" ->
                     "//a[@href= 'https://stackoverflow.co/teams/' and @class='s-navigation--item js-gps-track']";
             case "productMenu" -> "//a[@class= 's-navigation--item js-gps-track js-products-menu is-selected']";
-            case "searchBar" -> "//div[@class = 's-topbar--searchbar--input-group']";
+            case "searchBar" -> "//input[@class = 's-input s-input__search js-search-field ']";
             case "logInButton" ->
                     "//*[@class = 's-topbar--item s-topbar--item__unset s-btn s-btn__filled ws-nowrap js-gps-track']";
             case "signUpButton" ->
@@ -51,5 +65,12 @@ public class StackoverflowPage extends Base {
                 yield null;
             }
         };
+    }
+
+    public void insertIntoSearchBar(String searchBarLocation, String insertIntoSearchBar) {
+
+        WebElement stackOverflowSearchBarInsert = driver.findElement(By.xpath(XpathForElements(searchBarLocation)));
+        stackOverflowSearchBarInsert.sendKeys(insertIntoSearchBar);
+        stackOverflowSearchBarInsert.sendKeys(Keys.ENTER);
     }
 }
