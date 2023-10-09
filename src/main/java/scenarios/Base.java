@@ -20,10 +20,10 @@ public class Base {
         driver = new ChromeDriver(chromeOptions);
     }
 
-    @AfterEach
-    public void baseAfter() {
-        driver.close();
-    }
+//    @AfterEach
+//    public void baseAfter() {
+//        driver.close();
+//    }
 
     @AfterAll
     public static void baseAfterClass() {
