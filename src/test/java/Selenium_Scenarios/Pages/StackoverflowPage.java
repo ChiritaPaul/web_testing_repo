@@ -57,9 +57,9 @@ public class StackoverflowPage extends Base {
             case "productMenu" -> "//a[@class= 's-navigation--item js-gps-track js-products-menu is-selected']";
             case "searchBar" -> "//input[@class = 's-input s-input__search js-search-field ']";
             case "logInButton" ->
-                    "//*[@class = 's-topbar--item s-topbar--item__unset s-btn s-btn__filled ws-nowrap js-gps-track']";
+                    "//*[@class = 's-topbar--item s-topbar--item__unset s-btn s-btn__outlined ws-nowrap js-gps-track']";
             case "signUpButton" ->
-                    "//*[@class = 's-topbar--item s-topbar--item__unset ml4 s-btn s-btn__primary ws-nowrap']";
+                    "//*[@class='s-topbar--item s-topbar--item__unset ml4 s-btn s-btn__filled ws-nowrap']";
             default -> {
                 System.out.println("Not found!");
                 yield null;
